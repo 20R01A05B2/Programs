@@ -1,20 +1,21 @@
-package week1;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.Scanner;
 
-public class week1 {
+public class AutomaticVideo {
 
 	public static void main(String[] args) throws InterruptedException  {
 		// TODO Auto-generated method stub
+		Scanner input=new Scanner(System.in);
+		String request=input.next();
 		System.setProperty("webdriver.chrome.driver", "C:\\ProgrammingLanguages\\JAVA\\SeleniumLab\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
 		driver.get("https:\\www.youtube.com");
 		driver.manage().window().maximize();
 		WebElement search_tab=driver.findElement(By.name("search_query"));
-		search_tab.sendKeys("Love O2O");
+		search_tab.sendKeys(request);
 		WebElement search_button=driver.findElement(By.id("search-icon-legacy"));
 		search_button.click();
 		Thread.sleep(3000);
@@ -26,7 +27,9 @@ public class week1 {
 		Thread.sleep(5000);
 		WebElement play_b=driver.findElement(By.id("ytd-player"));
 		play_b.click();
-		//driver.close();
+		Thread.sleep(30000);
+		driver.close();
+		input.close();
 	}
 
 }
